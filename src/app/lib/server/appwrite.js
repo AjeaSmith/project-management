@@ -5,7 +5,7 @@ import { SESSION_COOKIE } from "./const";
 export async function createSessionClient() {
 	const client = new Client()
 		.setEndpoint(process.env.NEXT_PUBLIC_ENDPOINT)
-		.setProject(process.env.NEXT_PUBLIC_PROJECT_ID);
+		.setProject(process.env.NEXT_PUBLIC_PROJECT_ID)
 
 	const cookieStore = await cookies();
 	const session = cookieStore.get(SESSION_COOKIE);
@@ -30,7 +30,7 @@ export async function createAdminClient() {
 	const client = new Client()
 		.setEndpoint(process.env.NEXT_PUBLIC_ENDPOINT)
 		.setProject(process.env.NEXT_PUBLIC_PROJECT_ID)
-		.setKey(process.env.NEXT_PUBLIC_API_KEY);
+		.setKey(process.env.NEXT_PRIVATE_API_KEY);
 
 	return {
 		get account() {
@@ -50,4 +50,3 @@ export async function getLoggedInUser() {
 		return null;
 	}
 }
-
